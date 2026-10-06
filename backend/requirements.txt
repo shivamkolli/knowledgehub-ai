@@ -3,3 +3,5 @@ fastapi
 pydantic
 pydantic-settings
 uvicorn
+SQLAlchemy
+psycopg[binary]

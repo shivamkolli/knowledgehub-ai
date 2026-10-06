@@ -2,3 +2,4 @@
 testpaths = ["tests"]
 pythonpath = ["."]
 addopts = "-ra"
+markers = ["integration: requires an explicitly configured PostgreSQL database"]

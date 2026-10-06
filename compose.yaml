@@ -1,0 +1,19 @@
+name: knowledgehub-ai
+services:
+  postgres:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: knowledgehub
+      POSTGRES_PASSWORD: knowledgehub_local
+      POSTGRES_DB: knowledgehub
+    ports:
+      - "127.0.0.1:${KNOWLEDGEHUB_POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U knowledgehub -d knowledgehub"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+volumes:
+  postgres_data:

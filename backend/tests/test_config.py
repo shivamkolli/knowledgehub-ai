@@ -19,3 +19,8 @@ def test_settings_reject_invalid_environment(monkeypatch: pytest.MonkeyPatch) ->
 
     with pytest.raises(ValidationError, match="environment"):
         Settings(_env_file=None, app_name="Test service")
+
+
+def test_settings_reject_non_postgres_database_url() -> None:
+    with pytest.raises(ValidationError, match="postgresql"):
+        Settings(_env_file=None, environment="test", database_url="sqlite:///local.db")

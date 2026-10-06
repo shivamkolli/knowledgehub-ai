@@ -6,12 +6,13 @@ grounded in those documents and linked to source passages.
 
 ## Current state
 
-**Increment 2: runnable FastAPI foundation.** The backend has a health endpoint,
-validated environment settings, interactive API documentation, and pytest tests.
-The frontend, database, Docker services, and cloud resources are still planned.
+**Increment 3: PostgreSQL and SQLAlchemy integration.** The backend has separate
+liveness and database readiness endpoints, validated settings, request-scoped
+sessions, and unit/integration tests. Docker Compose runs local PostgreSQL.
+Application tables, Alembic migrations, and the frontend are still planned.
 
-See [the increment 2 walkthrough](docs/step-02-fastapi.md) for setup, commands,
-and a guided explanation of the code.
+See [development decisions and setup](docs/decisions.md) for current setup
+commands, verification, and the reasoning behind implementation choices.
 
 We will build one reviewable increment at a time. Each increment explains the
 Python/FastAPI concepts it introduces, includes appropriate verification, and
@@ -36,11 +37,12 @@ stops for review. You decide when to commit. Nothing is committed automatically.
 knowledgehub-ai/
 ├── README.md
 ├── .gitignore
+├── compose.yaml            # Local PostgreSQL
 ├── docs/
 │   ├── requirements.md     # Scope, user journeys, acceptance criteria
 │   ├── architecture.md     # Components, trust boundaries, request flows
 │   ├── data-model.md       # Proposed entities and integrity rules
-│   └── step-02-fastapi.md  # Run and understand the first endpoint
+│   └── decisions.md       # Implementation decisions and current setup
 ├── frontend/
 │   └── src/               # React source, added in a later increment
 └── backend/
@@ -91,5 +93,5 @@ Cloud deployment will be an explicit later step with costs and teardown explaine
 2. [Architecture](docs/architecture.md): how components cooperate.
 3. [Data model](docs/data-model.md): what we store and how records relate.
 
-Review and run increment 2 before moving to PostgreSQL/SQLAlchemy. No credentials
-or external services are needed for the current backend.
+Review and run increment 3 before moving to Alembic migrations. Local demo database
+credentials are provided; no cloud account is required.
