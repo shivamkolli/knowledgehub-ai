@@ -6,9 +6,12 @@ grounded in those documents and linked to source passages.
 
 ## Current state
 
-**Increment 1: repository structure and design documents only.** No application,
-dependencies, database, Docker configuration, or cloud resources exist yet.
-There is nothing to run at this stage. Everything below describes the planned app.
+**Increment 2: runnable FastAPI foundation.** The backend has a health endpoint,
+validated environment settings, interactive API documentation, and pytest tests.
+The frontend, database, Docker services, and cloud resources are still planned.
+
+See [the increment 2 walkthrough](docs/step-02-fastapi.md) for setup, commands,
+and a guided explanation of the code.
 
 We will build one reviewable increment at a time. Each increment explains the
 Python/FastAPI concepts it introduces, includes appropriate verification, and
@@ -36,18 +39,23 @@ knowledgehub-ai/
 ├── docs/
 │   ├── requirements.md     # Scope, user journeys, acceptance criteria
 │   ├── architecture.md     # Components, trust boundaries, request flows
-│   └── data-model.md       # Proposed entities and integrity rules
+│   ├── data-model.md       # Proposed entities and integrity rules
+│   └── step-02-fastapi.md  # Run and understand the first endpoint
 ├── frontend/
 │   └── src/               # React source, added in a later increment
 └── backend/
-    ├── app/               # FastAPI application, added next
-    └── tests/             # Backend tests as behavior is introduced
+    ├── app/               # Application entry point and settings
+    ├── tests/             # Health and configuration tests
+    ├── .env.example       # Safe example configuration
+    ├── .python-version    # Python 3.14
+    ├── pyproject.toml     # pytest configuration
+    ├── requirements.txt   # Runtime dependencies
+    ├── requirements-dev.txt # Test dependencies
+    └── requirements.lock  # Resolved version constraints
 ```
 
-Empty source directories contain `.gitkeep` placeholders so Git can track them.
-We will add configuration when it becomes useful, rather than preselecting package
-versions or creating empty modules now. Infrastructure files will arrive with the
-services they configure.
+The empty frontend source directory contains a `.gitkeep` placeholder so Git can
+track it. Infrastructure files will arrive with the services they configure.
 
 ## Learning roadmap
 
@@ -83,5 +91,5 @@ Cloud deployment will be an explicit later step with costs and teardown explaine
 2. [Architecture](docs/architecture.md): how components cooperate.
 3. [Data model](docs/data-model.md): what we store and how records relate.
 
-Before increment 2, review the scope and design assumptions. No environment setup
-or credentials are needed for increment 1.
+Review and run increment 2 before moving to PostgreSQL/SQLAlchemy. No credentials
+or external services are needed for the current backend.
